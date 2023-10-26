@@ -130,7 +130,7 @@ private int nCups; // The number of cups remaining in inventory
 ```
 
 ---
-1. Make the `Cafe` class `extend` the `Building` class, add the attributes listed above, and modify the `Cafe` constructor to set the starting values of each of the stocked items (coffee, sugar, cream, and cups).
+1. Make the `Cafe` class `extend` the `Building` class, add the attributes listed above, and modify the `Cafe` constructor to set the starting values of each of the stocked items (coffee, sugar, cream, and cups). 
 
 ---
 2. Write a method to decrease the remaining inventory when the `Cafe` sells a cup of coffee:
