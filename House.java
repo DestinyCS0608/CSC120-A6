@@ -80,6 +80,7 @@ public class House extends Building {
     return residents.contains(person);
   }
 
+  /* Main for testing!*/
   public static void main(String[] args) {
     House gillett = new House("Gillett", "47 Elm Street", 5, false);
     System.out.println(gillett);
