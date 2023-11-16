@@ -1,4 +1,9 @@
-/* This is a stub for the House class */
+/** 
+ * Filename: House.java
+ * Decription: House class extended from Building 
+ * Attributes: hasDiningRoom (boolean), an array list containing all residents, and a boolean for whether or not there is an elevator. 
+ * Functions: hasDiningRoom(), nResidents(), moveOut(), moveIn(), and isResident().
+ */
 
 import java.util.ArrayList;
 
@@ -25,11 +30,7 @@ public class House extends Building {
    * @return true or false - whether the House has a dining room, followed by a message
    */
   public boolean hasDiningRoom() {
-    if (hasDiningRoom == true){
-      return true;
-    } else {
-      return false;
-    }
+    return hasDiningRoom();
   }
 
   /**
@@ -45,8 +46,13 @@ public class House extends Building {
    * @param name the resident's name that is being added to the array list or moving in
    */
   public void moveIn(String name) {
-    residents.add(name);
-  }
+    if (this.residents.contains(name)) {
+        throw new RuntimeException(name + " is already a resident of this house");
+      }
+      this.residents.add(name);
+      System.out.println(name + " was moved into the house.");
+}
+  
 
   /**
    * Method that removes the name of a resident from the residents array list. 
@@ -54,9 +60,16 @@ public class House extends Building {
    * @return the resident's name that was removed from the array list
    */
   public String moveOut(String name) {
-    residents.remove(name);
-    return name;
-  }
+    if (this.residents.size() == 0){
+        throw new RuntimeException("Sorry, there are no residents in this house");
+      }
+      if (!this.residents.contains(name)){
+        throw new RuntimeException(name+ " is not a resident in this house");
+      }
+      this.residents.remove(name);
+      System.out.println(name + " moved out of the house.");
+      return name;
+}
 
   /**
    * Boolean Method that checks if a person is in the residents array list 
@@ -64,13 +77,7 @@ public class House extends Building {
    * @return true or false - whether if the person is in the resident array list, followed by a message
    */
   public boolean isResident(String person) {
-    if (residents.contains(person)){
-      System.out.println("Yes, " + person + " is a resident.");
-      return true;
-    } else {
-      System.out.println("No, " + person + " is not a resident!");
-      return false;
-    }
+    return residents.contains(person);
   }
 
   public static void main(String[] args) {

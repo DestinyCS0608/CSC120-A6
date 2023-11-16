@@ -1,9 +1,16 @@
-/* This is a stub for the Cafe class */
+/** 
+ * Filename: Cafe.java
+ * Decription: Cafe class extended from Building class 
+ * Attributes: nCoffeeOunces, nSugarPackets, nCreams, and nCups. 
+ * Contains functions sellCoffee, and restock.
+ * @author Destiny Cecchi Samuels
+ */
+
 public class Cafe extends Building{
-    private int nCoffeeOunces; // The number of ounces of coffee remaining in inventory
-    private int nSugarPackets; // The number of sugar packets remaining in inventory
-    private int nCreams; // The number of "splashes" of cream remaining in inventory
-    private int nCups; // The number of cups remaining in inventory
+    private int nCoffeeOunces; 
+    private int nSugarPackets;
+    private int nCreams; 
+    private int nCups; 
 
     /**
      * Constructor for the cafe attrributes, includes the name, address, and amount of floor of the cafe
@@ -26,23 +33,16 @@ public class Cafe extends Building{
      * @param nSugarPackets the amount of sg
      * @param nCreams
      */
-    public void sellCoffee(int size, int nSugarPackets, int nCreams){    
-        int remainingCoffee = this.nCoffeeOunces-size; 
-        int remainingSugar = this.nSugarPackets-nSugarPackets;
-        int remainingCream = this.nCreams-nCreams;
-        int remainingCups = this.nCups-1;
-
-        if( remainingCoffee > 0  && remainingSugar > 0  && remainingCream > 0  && remainingCups > 0){
-            // then i can make a coffee! 
-            this.nCoffeeOunces -= size;
-            this.nSugarPackets -= nSugarPackets;
-            this.nCreams -= nCreams;
-            this.nCups = nCups - 1;
-        } else{
-            System.out.println( name + " has restocked!");
-            this.restock(60, 50, 30, 40); 
-            }
-        
+    public void sellCoffee(int size, int nSugarPackets, int nCreams){
+        if (this.nCoffeeOunces<size || this.nSugarPackets<nSugarPackets || this.nCreams<nCreams || this.nCups == 0) {
+            System.out.println("Stock is low, we are restocking!");
+            restock(size, nSugarPackets, nCreams, 1);
+        }
+        this.nCoffeeOunces -= size;
+        this.nSugarPackets -= nSugarPackets;
+        this.nCreams -= nCreams;
+        this.nCups -= 1;
+        System.out.println("Coffee succesfully sold!");
     }
 
     /**
